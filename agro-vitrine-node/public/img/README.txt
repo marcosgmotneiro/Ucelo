@@ -1,0 +1,1 @@
+Adicione imagens à pasta public/img (ex: hero.jpg).

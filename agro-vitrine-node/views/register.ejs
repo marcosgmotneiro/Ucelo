@@ -1,0 +1,30 @@
+<%- include('partials/header', { user: null }) %>
+<div class="max-w-md mx-auto bg-white p-6 rounded-xl shadow">
+  <h2 class="text-xl font-semibold mb-4">Criar Conta</h2>
+  <form method="post" action="/register" class="space-y-4">
+    <div>
+      <label class="block text-sm mb-1">Nome</label>
+      <input name="name" required class="w-full border rounded px-3 py-2" />
+    </div>
+    <div>
+      <label class="block text-sm mb-1">Email</label>
+      <input name="email" type="email" required class="w-full border rounded px-3 py-2" />
+    </div>
+    <div>
+      <label class="block text-sm mb-1">Senha</label>
+      <input name="password" type="password" required class="w-full border rounded px-3 py-2" />
+    </div>
+    <div>
+      <label class="block text-sm mb-1">Tipo de conta</label>
+      <select name="role" class="w-full border rounded px-3 py-2">
+        <option value="CLIENTE">Cliente</option>
+        <option value="PROFISSIONAL">Profissional</option>
+      </select>
+    </div>
+    <button class="w-full py-2 rounded bg-green-600 text-white">Cadastrar</button>
+    <% if (typeof error !== 'undefined' && error) { %>
+      <p class="text-red-600 text-sm"><%= error %></p>
+    <% } %>
+  </form>
+</div>
+<%- include('partials/footer') %>

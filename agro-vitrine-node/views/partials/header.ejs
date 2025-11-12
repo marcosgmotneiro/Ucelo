@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+   <link rel="icon" type="image/png" href="https://ucelo.com.br/images/favicon.png" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ucelo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-gray-50 text-gray-800">
+
+<!-- Navbar -->
+<header class="bg-white border-b">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <!-- Logo -->
+    <div class="flex items-center gap-2">
+      <img src="/img/logo.jpg" alt="Logo" class="w-32 h-32">
+      
+    </div>
+
+    <!-- Menu -->
+    <nav class="flex items-center gap-6 text-sm font-medium text-gray-700">
+  <a href="#inicio" class="hover:text-indigo-600">Início</a>
+  <a href="#produtos" class="hover:text-indigo-600">Produtos</a>
+  <a href="#contato" class="hover:text-indigo-600">Contato</a>
+
+  <% if (user) { %>
+    <span class="text-gray-600">Olá, <%= user.name %></span>
+    <a href="/logout" class="text-indigo-600 hover:underline">Sair</a>
+  <% } else { %>
+    <a href="/login" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition">Login</a>
+  <% } %>
+
+    </nav>
+  </div>
+</header>
+
+<main>

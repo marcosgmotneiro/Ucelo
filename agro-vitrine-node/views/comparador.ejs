@@ -1,0 +1,58 @@
+<%- include('partials/header', { user: user }) %>
+
+<section class="max-w-5xl mx-auto py-10">
+  <h2 class="text-2xl font-semibold mb-6 text-center">Comparador de Canecas</h2>
+
+  <form method="POST" action="/comparar" class="grid md:grid-cols-2 gap-6 mb-10 bg-white p-6 rounded-xl shadow">
+    <div>
+      <label class="block text-sm font-medium mb-2">Caneca 1</label>
+      <select name="caneca1" class="w-full border rounded-lg px-3 py-2">
+        <% canecas.forEach(c => { %>
+          <option value="<%= c.Modelo %>"><%= c.Modelo %></option>
+        <% }) %>
+      </select>
+    </div>
+    <div>
+      <label class="block text-sm font-medium mb-2">Caneca 2</label>
+      <select name="caneca2" class="w-full border rounded-lg px-3 py-2">
+        <% canecas.forEach(c => { %>
+          <option value="<%= c.Modelo %>"><%= c.Modelo %></option>
+        <% }) %>
+      </select>
+    </div>
+    <div class="md:col-span-2 flex justify-center mt-4">
+      <button class="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition">Comparar</button>
+    </div>
+  </form>
+
+  <% if (resultado) { %>
+    <% if (resultado.erro) { %>
+      <p class="text-red-600 text-center"><%= resultado.erro %></p>
+    <% } else { %>
+      <div class="bg-gray-50 p-6 rounded-xl shadow">
+        <h3 class="text-xl font-semibold mb-4 text-center">Resultado da Comparação</h3>
+        <div class="grid md:grid-cols-2 gap-6 text-sm">
+          <div class="bg-white rounded-lg p-4 shadow">
+            <h4 class="font-semibold text-gray-700 mb-2"><%= resultado.modelo1 %></h4>
+            <p><b>Material:</b> <%= resultado.material1 %></p>
+            <p><b>Furação:</b> <%= resultado.furacao1 %></p>
+            <p><b>Volume:</b> <%= resultado.volumeDiff >= 0 ? resultado.volumeDiff : -resultado.volumeDiff %> mL</p>
+          </div>
+          <div class="bg-white rounded-lg p-4 shadow">
+            <h4 class="font-semibold text-gray-700 mb-2"><%= resultado.modelo2 %></h4>
+            <p><b>Material:</b> <%= resultado.material2 %></p>
+            <p><b>Furação:</b> <%= resultado.furacao2 %></p>
+            <p><b>Diferença de Volume:</b> <%= resultado.volumeDiff %></p>
+          </div>
+        </div>
+
+        <div class="text-center mt-6">
+          <p><b>Diferença de Resistência à Tração:</b> <%= resultado.resistenciaDiff %></p>
+          <p><b>Diferença de Deslocamento:</b> <%= resultado.deslocamentoDiff %></p>
+        </div>
+      </div>
+    <% } %>
+  <% } %>
+</section>
+
+<%- include('partials/footer') %>
