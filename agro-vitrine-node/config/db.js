@@ -3,8 +3,8 @@ import mysql from 'mysql2/promise';
 export const db = mysql.createPool({
   host: 'localhost',
   user: 'root',
-  password: 'SUA_SENHA',
-  database: 'agrodb',
+  password: '12345678',
+  database: 'UCELO',
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0

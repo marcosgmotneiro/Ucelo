@@ -10,8 +10,6 @@ import productRoutes from './routes/productRoutes.js';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 
-import comparacaoRoutes from "./routes/comparacaoRoutes.js";
-app.use("/comparar", comparacaoRoutes);
 
 
 // Configuração básica
@@ -39,3 +37,6 @@ app.get('/', (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`🚀 Servidor rodando em http://localhost:${PORT}`));
+
+import comparacaoRoutes from "./routes/comparacaoRoutes.js";
+app.use("/comparar", comparacaoRoutes);
